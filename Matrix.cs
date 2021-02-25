@@ -7,12 +7,9 @@ namespace cv3
     class Matrix
     {
         //constant for determining precision because of the use of double in matrices
-        public static double Epsilon = 0.000001;
-        public double[,] Values
-        {
-            get;
-            set;
-        }
+        public const double Epsilon = 0.000001;
+        private double[,] Values;
+       
         public Matrix(double[,] values)
         {
             Values = values;
