@@ -4,7 +4,7 @@ using System.Text;
 
 namespace cv3
 {
-    class Matrix
+    public class Matrix
     {
         //constant for determining precision because of the use of double in matrices
         public const double Epsilon = 0.000001;
