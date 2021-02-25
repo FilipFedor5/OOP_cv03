@@ -30,25 +30,27 @@ namespace cv3
             if (matA.Values.GetLength(0) == matA.Values.GetLength(1)) return true;
             return false;
         }
-
+        //must return new matrix
         public static Matrix operator +(Matrix matA, Matrix matB)
         {
             if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrixes arent of the same dimensions");
+
+            Matrix matC = matA;
 
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
                 for (int col = 0; col < matA.Values.GetLength(1); col++)
                 {
-                    matA.Values[row, col] = matA.Values[row, col] + matB.Values[row, col];
+                    matC.Values[row, col] = matA.Values[row, col] + matB.Values[row, col];
                 }
             }
-            return matA;
+            return matC;
         }
 
         public static Matrix operator -(Matrix matA, Matrix matB)
         {
             if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrixes arent of the same dimensions");
-
+            Matrix matC = matA;
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
                 for (int col = 0; col < matA.Values.GetLength(1); col++)
@@ -56,11 +58,12 @@ namespace cv3
                     matA.Values[row, col] = matA.Values[row, col] - matB.Values[row, col];
                 }
             }
-            return matA;
+            return matC;
         }
         //unar minus
         public static Matrix operator -(Matrix matA)
         {
+            Matrix matC = matA;
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
                 for (int col = 0; col < matA.Values.GetLength(1); col++)
@@ -68,7 +71,7 @@ namespace cv3
                     matA.Values[row, col] = -matA.Values[row, col];
                 }
             }
-            return matA;
+            return matC;
         }
 
         //for boolean operators using contant epsilon to determine accuracy, for double can be rounded
