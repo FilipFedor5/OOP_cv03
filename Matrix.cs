@@ -18,7 +18,7 @@ namespace cv3
             Values = values;
         }
 
-        static bool AreSameSize(Matrix matA, Matrix matB)
+        public static bool AreSameSize(Matrix matA, Matrix matB)
         {
             //argument of getlength 0 for number of rows, 1 for number of collums
             if (matA.Values.GetLength(0) == matB.Values.GetLength(0))
@@ -28,7 +28,7 @@ namespace cv3
             return false;
         }
 
-        static bool IsSquare(Matrix matA)
+        public static bool IsSquare(Matrix matA)
         {
             if (matA.Values.GetLength(0) == matA.Values.GetLength(1)) return true;
             return false;
@@ -91,30 +91,22 @@ namespace cv3
 
         public static bool operator !=(Matrix matA, Matrix matB)
         {
-            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrices arent of the same dimensions");
-
-            for (int row = 0; row < matA.Values.GetLength(0); row++)
-            {
-                for (int col = 0; col < matA.Values.GetLength(1); col++)
-                {
-                    if (matA.Values[row, col] - matB.Values[row, col] > Matrix.Epsilon) return true;
-                }
-            }
-            return false;
+            return !(matA==matB);
         }
         
-        public static void ToString(Matrix matA)
+        public static string ToString(Matrix matA)
         {
+            StringBuilder buffer = new StringBuilder();
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
                 for (int col = 0; col < matA.Values.GetLength(1); col++)
                 {
-                    Console.Write(string.Format("{0:0.##}  ", matA.Values[row, col]));
+                    buffer.AppendFormat("{0,6:f1} ", matA.Values[row, col]);
                 }
-                Console.WriteLine();
+                buffer.AppendLine();
             }
-            Console.WriteLine();
-
+            
+            return buffer.ToString();
         }
 
 
