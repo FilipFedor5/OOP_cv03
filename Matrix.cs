@@ -36,7 +36,7 @@ namespace cv3
 
         public static Matrix operator +(Matrix matA, Matrix matB)
         {
-            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrices arent of the same dimensions");
+            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrixes arent of the same dimensions");
 
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
@@ -50,7 +50,7 @@ namespace cv3
 
         public static Matrix operator -(Matrix matA, Matrix matB)
         {
-            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrices arent of the same dimensions");
+            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrixes arent of the same dimensions");
 
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
@@ -77,7 +77,7 @@ namespace cv3
         //for boolean operators using contant epsilon to determine accuracy, for double can be rounded
         public static bool operator ==(Matrix matA, Matrix matB)
         {
-            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrices arent of the same dimensions");
+            if (!Matrix.AreSameSize(matA, matB)) throw new ArgumentException("matrixes arent of the same dimensions");
 
             for (int row = 0; row < matA.Values.GetLength(0); row++)
             {
@@ -117,7 +117,7 @@ namespace cv3
         {
             //You can only multiply matrices if the number of columns of the first matrix is the same as the number of rows as the second matrix.
 
-            if (matA.Values.GetLength(1) != matB.Values.GetLength(0)) throw new ArgumentException("matrices arent compatible for multiplication");
+            if (matA.Values.GetLength(1) != matB.Values.GetLength(0)) throw new ArgumentException("matrixes arent compatible for multiplication");
 
 
             double[,] matC = new double[matA.Values.GetLength(0), matB.Values.GetLength(1)];
